@@ -61,6 +61,29 @@ export default function Home() {
             />
           </div>
           <div>
+            <label htmlFor="cnh">Voce possui CNH?</label>
+            <input type="checkbox"
+              checked={cnh}
+              onChange={(e) => setCNH(e.target.checked)}
+              name="cnh"
+              id="cnh"
+            />
+          </div>
+          <div>
+            <label htmlFor="altura">Altura</label>
+            <input type="number"
+              placeholder="Digite o seu Altura"
+              value={altura}
+              onChange={(e) => setAltura(e.target.value)}
+              name="altura"
+              id="altura"
+              step="0.01"
+              min="1.3"
+              max="2.5"
+              required
+            />
+          </div>
+          <div>
             <button type="submit">Enviar</button>
             <button type="reset">Limpar</button>
           </div>
