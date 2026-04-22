@@ -1,5 +1,6 @@
 'use client'
-import React, { useState } from "react"; ''
+import { setGlobal } from "next/dist/trace";
+import React, { ChangeEvent, useState } from "react"; ''
 export default function Home() {
   // Declarar as variaveis
   const [nome, setNome] = useState("")
@@ -8,6 +9,14 @@ export default function Home() {
   const [nascimento, setNascimento] = useState("")
   const [cnh, setCNH] = useState(false)
   const [altura, setAltura] = useState("")
+  const [cidade, setCidade] = useState("")
+  const [observacao,setObservacao] = useState("")
+  const [arquivo, setArquivo] = useState<File | null>(null)
+
+  function handlerArquivo(e: React.ChangeEvent<HTMLInputElement>){
+    const file = e.target.files?.[0] || null
+    setArquivo(file)
+  }
 
   // Funções
   function enviarFormulario(e: React.FormEvent) {
@@ -82,6 +91,26 @@ export default function Home() {
               max="2.5"
               required
             />
+          </div>
+          <div>
+            <label htmlFor="cidade">Cidade</label>
+            <select name="cidade" id="cidade" value={cidade}
+            onChange={(e) => setCidade(e.target.value)}>
+              <option value="">Selecione uma cidade</option>
+              <option value="castro">castro</option>
+              <option value="pirai">Pirai</option>
+              <option value="tibagi">Tibagi</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="observacao">Observações</label>
+            <textarea 
+            name="observacao" 
+            id="observacao"
+            onChange={(e) => setObservacao(e.target.value) }
+            value={observacao}
+            >
+            </textarea>
           </div>
           <div>
             <button type="submit">Enviar</button>
