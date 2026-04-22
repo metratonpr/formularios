@@ -113,6 +113,10 @@ export default function Home() {
             </textarea>
           </div>
           <div>
+            <label htmlFor="arquivo">Arquivo</label>
+            <input type="file" onChange={handlerArquivo} />
+          </div>
+          <div>
             <button type="submit">Enviar</button>
             <button type="reset">Limpar</button>
           </div>
